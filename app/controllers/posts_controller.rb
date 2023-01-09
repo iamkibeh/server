@@ -10,6 +10,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_method
         post = find_posts
         render json: post
     end
+    
 
     def create
         post = Post.create(post_params)
