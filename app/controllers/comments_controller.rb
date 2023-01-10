@@ -5,6 +5,12 @@ class CommentsController < ApplicationController
         render json: comments
     end
 
+    def show
+        comments = Comments.all
+        render json: comments
+        
+    end
+
     def create
         comments = Comments.create(comments_params)
         render json: comments, status: :created
