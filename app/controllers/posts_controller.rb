@@ -30,7 +30,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_method
     end
 
     def post_params
-        params.permit(:post_title, :post_description, :post_img, :post_like, :post_comment)
+        params.permit(:post_title, :post_description, :post_like, :post_comment, :image)
     end
 
     def p_params
