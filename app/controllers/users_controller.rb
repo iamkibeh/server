@@ -32,7 +32,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_method
     end
 
     def user_params
-        params.permit(:first_name, :last_name, :email, :phone_number, :password, :agreement, :github, :linkedin, :cv_link, :country, :bio, :skills, :profession, :user_type, :company_name, :company_website, :image)
+        params.permit(:first_name, :last_name, :email, :phone_number, :password, :agreement, :github, :linkedin, :cv_link, :country, :bio, :skills, :profession, :user_type, :company_name, :company_website, :avatar)
     end
 
     def record_not_found_method
