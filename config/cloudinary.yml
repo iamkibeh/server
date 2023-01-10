@@ -1,0 +1,18 @@
+development:
+  cloud_name: dfsnvtaed
+  api_key: '488144496149193'
+  api_secret: "O74g4OgPlLLwS52ziK6x2M6_RkE"
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: dfsnvtaed
+  api_key: '488144496149193'
+  api_secret: "O74g4OgPlLLwS52ziK6x2M6_RkE"
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: dfsnvtaed
+  api_key: '488144496149193'
+  api_secret: "O74g4OgPlLLwS52ziK6x2M6_RkE"
+  enhance_image_tag: true
+  static_file_support: false

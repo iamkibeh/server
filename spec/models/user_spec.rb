@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
         linkedin, cv link, profile image, cover image, country, bio, skills, profession, company id, user type,
         company name, company website" do
             expect(User.new.attributes).to include("first_name", "last_name", "email", "phone_number", "password_digest", 
-            "agreement", "github", "linkedin", "cv_link", "profile_img", "cover_img", "country", "bio", "skills", "company_id", 
+            "agreement", "github", "linkedin", "cv_link", "country", "bio", "skills", 
             "user_type", "company_name", "company_website")
             
         end

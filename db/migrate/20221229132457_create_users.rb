@@ -16,7 +16,6 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :bio
       t.string :skills
       t.string :profession
-      t.integer :company_id
       t.integer :user_type
       t.string :company_name
       t.string :company_website
