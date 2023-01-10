@@ -3,7 +3,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_method
 
     def index
         users = User.all
-        render json: users
+        render json: users, each_serializer: UsersSerializer
     end
 
     def show
@@ -18,8 +18,8 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_method
     def create
         user = User.create(user_params)
         if user.valid?
-            session[:user_id] = user.id
-            render json: user, status: :created
+            # session[:user_id] = user.id
+            render json: user, serializer: UsersSerializer, status: :created
         else
             render json: { error: user.errors.full_messages}, status: :unprocessable_entity
         end
@@ -32,7 +32,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_method
     end
 
     def user_params
-        params.permit(:first_name, :last_name, :email, :phone_number, :password_digest, :agreement, :github, :linkedin, :cv_link, :profile_img, :cover_img, :country, :bio, :skills, :profession, :user_type, :company_name, :company_website)
+        params.permit(:first_name, :last_name, :email, :phone_number, :password, :agreement, :github, :linkedin, :cv_link, :country, :bio, :skills, :profession, :user_type, :company_name, :company_website, :image)
     end
 
     def record_not_found_method
