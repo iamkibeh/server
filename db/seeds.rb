@@ -13,15 +13,7 @@
 
 # db/seeds.rb
 
-50.times do
-    User.create(
-      first_name: Faker::Name.name,
-      last_name: Faker::Name.name,
-      email: Faker::Internet.email,
-      password_digest: "password",
-  )
-  end
-  
+
 
 
 
