@@ -6,5 +6,9 @@ class User < ApplicationRecord
     has_many :comments, dependent: :destroy
     has_many :post, through: :comments
     has_one_attached :avatar
+
+   
+    validates :password, presence: true
+    validates :email, presence: true, uniqueness: true
 end
     
