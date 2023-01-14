@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :create, :show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  post "/login", to: "session#create"
+  post "/login", to: "authentication#create"
   get "/me", to: "users#show"
   post "/signup", to: "users#create"
 
