@@ -137,5 +137,37 @@ User.create(
     created_at: "20231201659",
     updated_at: "20231201659"
   )
+  
+  Post.create(
+     post_title: "All Jobs",
+     post_description: "This is a list of all the jobs that have been posted and available.",
+     post_img: "",
+     post_comment: "Wow this is an awesome post about the jobs that Moringa Alumni is offering.",
+     post_category: "All Jobs",
+  )
+  Post.create(
+    post_title: "Software Development" ,
+    post_description: "This is a list of all software development work that have been posted and available.",
+    post_img: "",
+    post_comment: "Wow this is an awesome post about the jobs that Moringa Alumni is offering.",
+    post_category: "Software Development",
+ )
+ Post.create(
+  post_title: "Mobile Development",
+  post_description: "This is a list of all the jobs that have been posted and available.",
+  post_img: "",
+  post_comment: "Wow this is an awesome post about mobile development that Moringa Alumni is offering.",
+  post_category: "Mobile Development",
+)
+
+Comment.create([
+  {text: "This is a great post!", post_id: 1, user_id: 1},
+  {text: "I totally agree!", post_id: 2, user_id: 2},
+  {text: "I disagree, this post is terrible.", post_id: 3, user_id: 3},
+  {text: "This is a well-written article.", post_id: 4, user_id: 4},
+  {text: "I have a different opinion on this topic.", post_id: 5, user_id: 5},
+])
+
+
 
 puts "Done creating users data....😍️"
