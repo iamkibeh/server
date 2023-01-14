@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 2023_01_10_053509) do
   end
 
   create_table "likes", force: :cascade do |t|
+<<<<<<< HEAD
+=======
     t.integer "user_id"
     t.integer "post_id"
     t.datetime "created_at", precision: 6, null: false
@@ -56,6 +58,7 @@ ActiveRecord::Schema.define(version: 2023_01_10_053509) do
   end
 
   create_table "post_types", force: :cascade do |t|
+>>>>>>> main
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
