@@ -1,12 +1,10 @@
-class SessionController < ApplicationController
-
-    before_action :authenticate_request, except: :create
-
+class AuthenticationController < ApplicationController
+    skip_before_action :authenticate_user
+    
     def create
-        user = User.find_by(email: params[:email])
-        puts user
+        user = User.find_by_email(params[:email])
         if user&.authenticate(params[:password])
-            token = jwt_encode(user_id: user.id)
+            token = JwtToken.encode(user_id: user.id)
             render json: {
                 user: user,
                 token: token
@@ -15,8 +13,5 @@ class SessionController < ApplicationController
             render json: { error: 'Invalid email or password.' }, status: :unauthorized
         end
     end
-
-
-
-
+    
 end
