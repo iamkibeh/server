@@ -6,7 +6,7 @@ ruby '2.7.4'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.7'
+gem 'rails', '~> 7.0.4'
 
 gem 'cloudinary'
 
