@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
       rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_method
-    skip_before_action :authenticate_user, only: [:create]
+    skip_before_action :authenticate_user, only: [:create, :index]
     before_action :find_user, only: [:show, :update, :destroy]
 
 
@@ -27,7 +27,6 @@ class UsersController < ApplicationController
   def create
     user = User.create(user_params)
     if user.valid?
-      # session[:user_id] = user.id
       render json: user, serializer: UsersSerializer, status: :created
     else
       render json: { error: user.errors.full_messages }, status: :unprocessable_entity
