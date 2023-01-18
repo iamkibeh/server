@@ -30,11 +30,11 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_method
     end
 
     def post_params
-        params.permit(:post_title, :post_description, :post_like, :post_comment, :image)
+        params.permit(:post_title, :post_description, :post_like, :post_comment, :post_img, :post_category, :post_type, :user_id, :company_id)
     end
 
     def p_params
-        params.permit(:post_comment)
+        params.permit(:post_comment, :post_like)
     end
 
     def record_not_found_method
