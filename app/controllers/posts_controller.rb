@@ -7,7 +7,8 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_method
     end
 
     def show 
-        @comment = @post.comments.build
+        post = find_posts
+        render json: post
     end
     
 
