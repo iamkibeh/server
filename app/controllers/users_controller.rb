@@ -42,8 +42,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
     # byebug
+    user = User.find(params[:id])
     if user.valid?
       user.update(user_params)
       render json: user, status: :ok
@@ -55,11 +55,11 @@ class UsersController < ApplicationController
   private
 
   def find_user
-    User.find_by(id: session[:user_id])
+    User.find_by(id: params[:id])
   end
 
   def user_params
-    params.permit(:first_name, :last_name, :email, :phone_number, :password, :agreement, :github, :linkedin, :cv_link, :country, :bio, :skills, :profession, :user_type, :company_name, :company_website, :avatar)
+    params.permit(:first_name, :last_name, :email, :phone_number, :password, :agreement, :github, :linkedin, :cv_link, :country, :bio, :skills, :profession, :user_type, :company_name, :company_website, :profile_img, :twitter_url)
   end
 
   def record_not_found_method
