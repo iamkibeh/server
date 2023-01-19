@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
       rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_method
     skip_before_action :authenticate_user, only: [:create, :index]
+
+
+    
     before_action :find_user, only: [:show, :update, :destroy]
 
 
