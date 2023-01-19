@@ -14,6 +14,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_method
 
     def create
         post = Post.create(post_params)
+        puts "This is the Post ==>",post
         render json: post, status: :created
     end
 
