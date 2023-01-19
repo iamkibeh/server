@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
       rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_method
-    skip_before_action :authenticate_user, only: [:create, :index]
-    before_action :find_user, only: [:show, :update, :destroy]
+    skip_before_action :authenticate_user, only: [:create, :index, :show]
+    before_action :find_user, only: [:update, :destroy]
 
 
   def index
@@ -9,13 +9,21 @@ class UsersController < ApplicationController
     render json: users, each_serializer: UsersSerializer
   end
 
-  def show
+  def me
     user = find_user
     if user
       render json: user
     else
       render json: { error: "Not authorized" }, status: :unauthorized
     end
+  end
+
+  def show 
+    user = User.find_by!(id: params[:id])
+    if user
+      render json: user, status: :ok
+    end
+
   end
 
   def destroy
@@ -33,11 +41,17 @@ class UsersController < ApplicationController
     end
   end
 
-    #def update
-     #   unless User.update(user_params)
-      #      render json: { error: user.errors.full_messages }, status: :unprocessable_entity
-    #end
-
+  def update
+    user = User.find(params[:id])
+    # byebug
+    if user.valid?
+      user.update(user_params)
+      render json: user, status: :ok
+    else
+      render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
+    end
+  end
+  
   private
 
   def find_user
@@ -49,6 +63,6 @@ class UsersController < ApplicationController
   end
 
   def record_not_found_method
-    render json: { error: "Destination not found" }, status: :not_found
+    render json: { error: "Record not found" }, status: :not_found
   end
 end
