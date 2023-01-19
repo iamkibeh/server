@@ -14,6 +14,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_method
 
     def create
         post = Post.create(post_params)
+        puts "This is the Post ==>",post
         render json: post, status: :created
     end
 
@@ -30,7 +31,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_method
     end
 
     def post_params
-        params.permit(:post_title, :post_description, :post_like, :post_comment, :image)
+        params.permit(:post_title,:post_category, :post_type, :user_id, :post, :post_description,:post_img, :post_like, :post_comment, :image)
     end
 
     def p_params
