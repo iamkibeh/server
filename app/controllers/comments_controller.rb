@@ -10,8 +10,15 @@ class CommentsController < ApplicationController
   end
 
   def create
-    comments = Comment.create(comments_params)
-    render json: comments, status: :created
+    @comment = Comment.create(comment_params.merge(user_id: @user.id))
+
+    respond_to do |format|
+       if @comment.save
+         format.html { redirect_to @comment.post, notice: "Comment was successfully created." }
+       else
+         format.html { render :new, status: :unprocessable_entity }
+       end
+    end
   end
 
   def destroy
@@ -23,6 +30,6 @@ class CommentsController < ApplicationController
   private
 
   def comments_params
-    params.permit(:comment)
+    params.requrie(:comment).permit(:post_id, :text)
   end
 end
