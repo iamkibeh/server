@@ -1,14 +1,8 @@
 class User < ApplicationRecord
     has_secure_password
-    has_secure_password
-    has_many :likes
+    has_many :likes, dependent: :destroy
     has_many :posts, through: :likes
-
-    has_many :likes
-    has_many :posts, through: :likes
-
-    has_secure_password
-    has_many :comments, dependent: :destroy
+    has_many :comments
     has_many :post, through: :comments
     has_one_attached :avatar
 
@@ -35,6 +29,14 @@ class User < ApplicationRecord
       if !["admin", "user"].include?(user_type)
         errors.add(:user_type, "is not included in the list")
       end
+    end
+
+    def remaining_likes
+      total_likes_allowed - likes.count
+    end
+  
+    def can_like?
+      remaining_likes > 0
     end
 end
 
