@@ -10,11 +10,11 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.create(comment_params.merge(user_id: @user.id))
+    comment = Comment.create(comment_params.merge(user_id: user.id))
 
     respond_to do |format|
-       if @comment.save
-         format.html { redirect_to @comment.post, notice: "Comment was successfully created." }
+       if comment.save
+         format.html { redirect_to comment.post, notice: "Comment was successfully created." }
        else
          format.html { render :new, status: :unprocessable_entity }
        end
