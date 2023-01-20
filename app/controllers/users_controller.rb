@@ -59,7 +59,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.permit(:first_name, :last_name, :email, :phone_number, :password, :agreement, :github, :linkedin, :cv_link, :country, :bio, :skills, :profession, :user_type, :company_name, :company_website, :profile_img, :twitter_url)
+    params.permit(:first_name, :last_name, :email, :phone_number, :password, :agreement, :github, :linkedin, :cv_link, :country, :bio, :skills, :profession, :user_type, :company_name, :company_website, :profile_img, :twitter_url, :user_location, :id)
   end
 
   def record_not_found_method
