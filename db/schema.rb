@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_01_20_013350) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -90,7 +93,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_20_013350) do
     t.string "github"
     t.string "linkedin"
     t.string "cv_link"
-    t.string "profile_img"
     t.string "country"
     t.string "bio"
     t.string "skills"
@@ -100,8 +102,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_20_013350) do
     t.string "company_website"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "twitter_url"
-    t.string "user_location"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
